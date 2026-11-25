@@ -5,7 +5,7 @@
 
 ![Rust](https://img.shields.io/badge/rust-1.75%2B-orange?logo=rust&logoColor=white)
 ![GTK4](https://img.shields.io/badge/GTK-4-5294F2?logo=gtk&logoColor=white)
-![License](https://img.shields.io/badge/license-MIT-blue)
+![License](https://img.shields.io/badge/license-GPL--3.0-blue)
 ![Status](https://img.shields.io/badge/status-WIP-yellow)
 
 只是一个跑在 [niri] 上的轻量级本地音乐播放器。基于 `gtk4-layer-shell` 实现悬浮面板，

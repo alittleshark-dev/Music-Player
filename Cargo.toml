@@ -1,0 +1,14 @@
+[package]
+name = "Music-Player"
+version = "0.1.0"
+edition = "2026"
+
+[dependencies]
+dirs = "7.0.0"
+gtk = { version = "0.11.5", package = "gtk4", features = ["v4_24"] }
+gtk4-layer-shell = "0.8"
+mpris = "2.1"
+rodio = "0.23.0"
+serde = { version = "1.0.229", features = ["derive"] }
+toml = "1.2.2"
+walkdir = "2.5.1"

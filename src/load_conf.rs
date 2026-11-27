@@ -7,14 +7,26 @@ use std::path::PathBuf;
 pub struct AppConfig {
     #[serde(default)]
     pub layout: LayoutConfig,
+
+    #[serde(default)]
+    pub size: SizeConfig,
+
     #[serde(default)]
     pub css: CssConfig,
+}
+
+#[derive(Debug, Deserialize, Default)]
+pub struct SizeConfig {
+    pub width: Option<i32>,
+    pub height: Option<i32>,
 }
 
 // [layout] 块
 #[derive(Debug, Deserialize, Default)]
 pub struct LayoutConfig {
     pub top: Option<i32>,
+    pub right: Option<i32>,
+    pub bottom: Option<i32>,
     pub left: Option<i32>,
 }
 

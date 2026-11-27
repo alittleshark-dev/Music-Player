@@ -31,19 +31,32 @@ fn main() -> glib::ExitCode {
 fn build_ui(app: &Application, config: &load_conf::AppConfig) {
     let window = ApplicationWindow::builder()
         .application(app)
-        .title("Niri Music Player")
-        .default_width(320)
-        .default_height(400)
+        .title("A Music Player")
+        .default_width(config.size.width.unwrap_or(320))
+        .default_height(config.size.height.unwrap_or(400))
         .build();
 
     window.init_layer_shell();
     window.set_namespace(Some("music-player"));
     window.set_layer(Layer::Bottom);
 
-    window.set_anchor(Edge::Top, true);
-    window.set_anchor(Edge::Right, true);
-    window.set_margin(Edge::Top, config.layout.top.unwrap_or(20));
-    window.set_margin(Edge::Right, config.layout.left.unwrap_or(20));
+    if let Some(mtop) = config.layout.top {
+        window.set_anchor(Edge::Top, true);
+        window.set_margin(Edge::Top, mtop);
+    }
+    if let Some(mbottom) = config.layout.bottom {
+        window.set_anchor(Edge::Bottom, true);
+        window.set_margin(Edge::Bottom, mbottom);
+    }
+    if let Some(mright) = config.layout.right {
+        window.set_anchor(Edge::Right, true);
+        window.set_margin(Edge::Right, mright);
+    }
+    if let Some(mleft) = config.layout.left {
+        window.set_anchor(Edge::Left, true);
+        window.set_margin(Edge::Left, mleft);
+    }
+
     window.set_exclusive_zone(-1);
 
     let vbox = Box::new(gtk::Orientation::Vertical, 10);
